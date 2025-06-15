@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "https://raw.githubusercontent.com/OpenZeppelin/openzeppelin-contracts/v4.9.3/contracts/security/ReentrancyGuard.sol";
-
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
 contract RentalContract is ReentrancyGuard {
     enum Status { Pending, Active, Terminated, Disputed }

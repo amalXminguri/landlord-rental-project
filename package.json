@@ -1,0 +1,28 @@
+{
+  "name": "landlord-rental-project",
+  "version": "1.0.0",
+  "main": "rentalBacken.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amalXminguri/landlord-rental-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amalXminguri/landlord-rental-project/issues"
+  },
+  "homepage": "https://github.com/amalXminguri/landlord-rental-project#readme",
+  "description": "",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.9.3",
+    "@truffle/hdwallet-provider": "^2.1.15",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "ethers": "^6.14.4",
+    "express": "^5.1.0"
+  }
+}
