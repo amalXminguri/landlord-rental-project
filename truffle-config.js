@@ -10,7 +10,8 @@ module.exports = {
       provider: () =>
         new HDWalletProvider(
           MNEMONIC,
-          `wss://eth-sepolia.g.alchemy.com/v2/3Rx6utepgfugaHe2ngrto`
+          //`wss://eth-sepolia.g.alchemy.com/v2/3Rx6utepgfugaHe2ngrto` amal punya
+          `wss://eth-sepolia.g.alchemy.com/v2/MjbZXt804w_Xtkb3zcj-04JrGZ1f4cTY` //faiz punya
         ),
       network_id: 11155111, // Sepolia network ID
       confirmations: 2,

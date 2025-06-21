@@ -1,52 +1,41 @@
 // src/pages/index.tsx
-import { useState } from 'react';
-import { getContract } from '../lib/contract';
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import CreateLease from '../components/features/lease/CreateLease';
+import LeaseList from '../components/features/lease/LeaseList';
+import TestConnection from '../components/features/TestConnection';
 
-export default function Home() {
-  const [admin, setAdmin] = useState('');
+const Home: NextPage = () => {
+  return (
+    <div className="min-h-screen bg-gray-100">
+      <Head>
+        <title>Landlord Rental DApp</title>
+        <meta name="description" content="Blockchain Rental Management" />
+      </Head>
 
-  const connectWalletAndFetchAdmin = async () => {
-  try {
-    if (!window.ethereum) {
-      alert('Please install MetaMask!');
-      return;
-    }
+      <main className="container mx-auto py-8 space-y-8">
+        <h1 className="text-3xl font-bold text-center mb-8">Rental Management</h1>
+        
+        {/* Top Section - Connection Test and Create Lease */}
+        <div className="grid gap-8 md:grid-cols-2">
+          <div className="bg-white p-6 rounded-lg shadow">
+            <h2 className="text-xl font-semibold mb-4">Connection Test</h2>
+            <TestConnection />
+          </div>
+          
+          <div className="bg-white p-6 rounded-lg shadow">
+            <h2 className="text-xl font-semibold mb-4">Create New Lease</h2>
+            <CreateLease />
+          </div>
+        </div>
 
-    await window.ethereum.request({ method: 'eth_requestAccounts' });
-
-    // ✅ Await the getContract() call
-    const contract = await getContract();
-
-    // ✅ Call contract.admin() properly
-    const adminAddress = await contract.admin();
-    setAdmin(adminAddress);
-  } catch (error) {
-    console.error('Error connecting to contract:', error);
-  }
+        {/* Bottom Section - View All Leases */}
+        <div className="bg-white p-6 rounded-lg shadow">
+          <LeaseList />
+        </div>
+      </main>
+    </div>
+  );
 };
 
-
-  return (
-    <main style={{ padding: '2rem' }}>
-      <h1 style={{ fontSize: '24px' }}>🏠 Landlord DApp</h1>
-      <button
-        onClick={connectWalletAndFetchAdmin}
-        style={{
-          padding: '10px 20px',
-          backgroundColor: '#2563eb',
-          color: '#fff',
-          borderRadius: '6px',
-          marginTop: '1rem',
-        }}
-      >
-        Connect Wallet & Get Admin
-      </button>
-
-      {admin && (
-        <p style={{ marginTop: '1rem' }}>
-          <strong>Admin Address:</strong> {admin}
-        </p>
-      )}
-    </main>
-  );
-}
+export default Home;
